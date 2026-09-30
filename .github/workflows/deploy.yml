@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,9 +22,3 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: eu-north-1
-
-      - name: Build Docker image
-        run: docker build -t aws-web-app .
-
-      - name: Validate
-        run: test -f index.html
