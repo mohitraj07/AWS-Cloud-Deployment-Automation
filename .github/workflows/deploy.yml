@@ -15,3 +15,6 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t aws-web-app .
+
+      - name: Validate
+        run: test -f index.html
